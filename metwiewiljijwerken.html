@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tekst Kopiëren en Doorverwijzen</title>
+    <script>
+        function kopieerEnStartTimer() {
+            // De tekst die je wilt kopiëren
+            const tekstOmTeKopiëren = "Bij mijn werk, Den Engelsen, zijn we op zoek naar een Technisch Specialist met minimaal 3 jaar ervaring en een APK-bevoegdheid. En het zou geweldig zijn om met iemand te werken die niet alleen goed werk levert, maar ook écht bij ons team past. Wat maakt het nog beter? Als jij wordt aangenomen, krijgen we allebei een topbonus: een jaar lang gratis tanken met een tankpas! 🚗⛽ Zie jij jezelf al in deze rol, of ken je iemand die hier perfect in past? Laat het me weten! Bekijk de vacature en stuur me een berichtje. Een kop koffie staat altijd klaar om vrijblijvend verder te praten. Solliciteer vóór 1 maart!";
+
+            // Probeer de tekst naar het klembord te kopiëren
+            navigator.clipboard.writeText(tekstOmTeKopiëren).then(() => {
+                document.getElementById("melding").textContent = 
+                    "Tekst is gekopieerd naar je klembord! Je wordt automatisch doorgestuurd naar Facebook...";
+                console.log("Tekst gekopieerd naar klembord!");
+            }).catch(err => {
+                console.error("Fout bij het kopiëren van de tekst:", err);
+                document.getElementById("melding").textContent = 
+                    "Kopiëren is mislukt. Controleer je browserinstellingen.";
+            });
+
+            // Start de 10-seconden timer
+            setTimeout(() => {
+                window.location.href = "fb://"; // Probeert de Facebook-app te openen
+setTimeout(function() {
+  window.location.href = "https://www.facebook.com"; // Fallback naar de website als de app niet beschikbaar is
+}, 500); // 0.5 seconden wachten voordat we naar de website gaan
+            }, 1000); // 10 seconden
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+        }
+        #melding {
+            margin-top: 20px;
+            font-size: 16px;
+            color: green;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kopieer Tekst en Ga Verder</h1>
+    <p>Klik op de knop hieronder om de tekst naar je klembord te kopiëren. Je wordt daarna automatisch doorgestuurd naar Facebook.<br><br>
+        Bij mijn werk, Den Engelsen, zijn we op zoek naar een Technisch Specialist met minimaal 3 jaar ervaring en een APK-bevoegdheid. En het zou geweldig zijn om met iemand te werken die niet alleen goed werk levert, maar ook écht bij ons team past. Wat maakt het nog beter? Als jij wordt aangenomen, krijgen we allebei een topbonus: een jaar lang gratis tanken met een tankpas! 🚗⛽ Zie jij jezelf al in deze rol, of ken je iemand die hier perfect in past? Laat het me weten! Bekijk de vacature en stuur me een berichtje. Een kop koffie staat altijd klaar om vrijblijvend verder te praten. Solliciteer vóór 1 maart! </p>
+    <button class="button" onclick="kopieerEnStartTimer()">Kopieer tekst en start</button>
+    <p id="melding"></p>
+</body>
+</html>
